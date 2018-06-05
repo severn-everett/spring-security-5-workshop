@@ -1,10 +1,12 @@
 package com.example.library.server.business
 
+import com.example.library.server.common.NoArgConstructor
 import com.example.library.server.common.Role
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.apache.commons.lang3.builder.ToStringBuilder
 import java.util.*
 
+@NoArgConstructor
 class UserResource(
     var id: UUID?,
     var email: String?,

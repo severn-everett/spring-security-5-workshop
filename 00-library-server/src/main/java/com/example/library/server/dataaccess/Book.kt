@@ -1,41 +1,44 @@
 package com.example.library.server.dataaccess
 
+import com.example.library.server.common.NoArgConstructor
 import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.PersistenceConstructor
 import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.index.TextIndexed
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
 
 @Document(collection = "books")
-class Book(
+@NoArgConstructor
+class Book @PersistenceConstructor constructor(
     @Id
-    var id: UUID? = null,
+    val id: UUID?,
 
     @Indexed(unique = true)
-    var isbn: String? = null,
+    val isbn: String?,
 
     @Indexed
-    var title: String? = null,
+    val title: String?,
 
     @TextIndexed
-    var description: String? = null,
+    val description: String?,
 
-    var authors: List<String>? = null,
+    val authors: List<String>?,
 
-    var borrowed: Boolean? = null,
+    var borrowed: Boolean,
 
-    var borrowedBy: User? = null
+    var borrowedBy: User?
 ) {
 
   fun doBorrow(user: User) {
-    if (!borrowed!!) {
+    if (!borrowed) {
       borrowed = true
       borrowedBy = user
     }
   }
 
   fun doReturn(user: User) {
-    if (borrowed!!) {
+    if (borrowed) {
       borrowed = false
       borrowedBy = null
     }

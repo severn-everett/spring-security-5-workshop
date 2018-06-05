@@ -1,27 +1,30 @@
 package com.example.library.server.dataaccess
 
+import com.example.library.server.common.NoArgConstructor
 import com.example.library.server.common.Role
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.PersistenceConstructor
 import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
 
 @Document(collection = "users")
-class User(
+@NoArgConstructor
+class User @PersistenceConstructor constructor(
     @Id
-    var id: UUID? = null,
+    val id: UUID?,
 
     @Indexed
-    var email: String? = null,
+    val email: String?,
 
-    var password: String? = null,
+    val password: String?,
 
-    var firstName: String? = null,
+    val firstName: String?,
 
-    var lastName: String? = null,
+    val lastName: String?,
 
-    var roles: List<Role>? = null
+    val roles: List<Role>?
 ) {
 
   override fun toString(): String =
