@@ -18,6 +18,7 @@ subprojects {
 
     noArg {
         annotation("com.example.library.server.common.NoArgConstructor")
+        annotation("javax.persistence.Entity")
     }
 
     compileKotlin {
