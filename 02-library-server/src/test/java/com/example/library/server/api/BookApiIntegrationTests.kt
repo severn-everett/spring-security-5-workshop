@@ -24,10 +24,7 @@ import java.util.*
 @WebFluxTest(BookRestController::class)
 @AutoConfigureRestDocs
 @DisplayName("Verify book api")
-class BookApiIntegrationTests {
-
-  @Autowired
-  private lateinit var webClient: WebTestClient
+class BookApiIntegrationTests(@Autowired private val webClient: WebTestClient) {
 
   @MockBean
   private lateinit var bookService: BookService

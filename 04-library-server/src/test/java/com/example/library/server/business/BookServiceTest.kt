@@ -10,7 +10,9 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.security.access.AccessDeniedException
 import org.springframework.security.test.context.support.WithAnonymousUser
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
@@ -22,7 +24,7 @@ import java.util.*
 
 @DisplayName("Verify that book service")
 @SpringJUnitConfig(LibraryServerApplication::class)
-class BookServiceTest(private val bookService: BookService) {
+class BookServiceTest(@Autowired private val bookService: BookService) {
 
   @MockBean
   private lateinit var bookRepository: BookRepository

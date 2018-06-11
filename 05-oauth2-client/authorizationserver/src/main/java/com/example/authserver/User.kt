@@ -29,7 +29,7 @@ class User(
 ) : AbstractPersistable<Long>(), UserDetails {
 
   @JsonIgnore
-  override fun getId(): Long = super.getId()
+  override fun getId(): Long? = super.getId()
 
   override fun getAuthorities(): MutableCollection<out GrantedAuthority> =
     AuthorityUtils.createAuthorityList("USER")

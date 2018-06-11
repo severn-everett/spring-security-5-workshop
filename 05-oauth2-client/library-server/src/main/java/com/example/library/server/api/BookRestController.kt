@@ -35,14 +35,14 @@ class BookRestController(private val bookService: BookService) {
   @PostMapping("/books/$PATH_BOOK_ID/borrow")
   fun borrowBookById(
       @PathVariable(PATH_VARIABLE_BOOK_ID) bookId: UUID, @AuthenticationPrincipal user: LibraryUser): ResponseEntity<Void> {
-    bookService.borrowById(bookId, user.userResource.id)
+    bookService.borrowById(bookId, user.userResource?.id)
     return ok().build()
   }
 
   @PostMapping("/books/$PATH_BOOK_ID/return")
   fun returnBookById(
       @PathVariable(PATH_VARIABLE_BOOK_ID) bookId: UUID, @AuthenticationPrincipal user: LibraryUser): ResponseEntity<Void> {
-    bookService.returnById(bookId, user.userResource.id)
+    bookService.returnById(bookId, user.userResource?.id)
     return ok().build()
   }
 

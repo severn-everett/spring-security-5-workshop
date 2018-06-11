@@ -34,7 +34,7 @@ class WithMockLibraryUserSecurityContextFactory : WithSecurityContextFactory<Wit
   }
 
   private fun setIdentifier(withUser: WithMockLibraryUser, principal: LibraryUser) {
-    principal.userResource.id = if (withUser.identifier.isBlank())
+    principal.userResource?.id = if (withUser.identifier.isBlank())
       UUID.randomUUID()
     else
       UUID.fromString((withUser.identifier))

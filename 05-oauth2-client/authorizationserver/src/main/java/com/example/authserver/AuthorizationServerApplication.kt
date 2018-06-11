@@ -7,5 +7,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 open class AuthorizationServerApplication
 
 fun main(args: Array<String>) {
-  SpringApplication.run(AuthorizationServerApplication::class, *args)
+  SpringApplication.run(AuthorizationServerApplication::class.java, *args)
 }

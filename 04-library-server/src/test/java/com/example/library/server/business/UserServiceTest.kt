@@ -8,7 +8,9 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.security.access.AccessDeniedException
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.util.IdGenerator
@@ -19,7 +21,7 @@ import java.util.*
 
 @DisplayName("Verify that user service")
 @SpringJUnitConfig(LibraryServerApplication::class)
-class UserServiceTest(private val userService: UserService) {
+class UserServiceTest(@Autowired private val userService: UserService) {
 
   @MockBean
   private lateinit var userRepository: UserRepository
